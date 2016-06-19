@@ -110,6 +110,40 @@ namespace CRE
 		}
 	}
 
+	void TextManager::set_style(std::string textID, sf::Uint32 style)
+	{
+		// Move through the texts
+		for( Text * text : _texts )
+		{
+			// If we found the text we need...
+			if( text->get_ID() == textID )
+			{
+				// set the style for the text
+				text->_text.setStyle(style);
+
+				// and break the for loop
+				break;
+			}
+		}
+	}
+
+	void TextManager::set_color(std::string textID, const sf::Color & color)
+	{
+		// Move through texts
+		for( Text * text : _texts )
+		{
+			// If we found the text we need...
+			if( text->get_ID() == textID )
+			{
+				// set the color for the text
+				text->_text.setColor(color);
+
+				// and break from the for loop
+				break;
+			}
+		}
+	}
+
 	bool TextManager::is_empty()
 	{
 		return _texts.empty();

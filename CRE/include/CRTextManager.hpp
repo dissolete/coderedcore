@@ -80,6 +80,16 @@ namespace CRE
 			void remove_text(std::string textID);
 
 			/**
+			* Sets the style for the text based on an integer.
+			*/
+			void set_style(std::string textID, sf::Uint32 style );
+
+			/**
+			*
+			*/
+			void set_color(std::string textID, const sf::Color & color);
+
+			/**
 			* Returns true if there are no texts
 			*/
 			bool is_empty();
