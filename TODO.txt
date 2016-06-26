@@ -12,12 +12,11 @@ TODO:
 - [FINISHED] Define and implement an App interface class
 - [FINISHED] Define and implement a StateManager class
 - [FINISHED] Define and implement an State interface class
+- [FINISHED] Define and implement a TextManager class
 
-- [IN PROGRESS] {Jake, Gage} Define and implement a TextManager class
-    --> [IN PROGRESS] {Jake, Gage} Define and implement a text wrapper class
+- [STAGED | UNTESTED] Define a SoundManager class
 
-- [NOT STARTED] Define a SoundManager class
-- [NOT STARTED] Define a MusicManager class
-- [NOT STARTED] Define an AssetManager class.
+- [NOT STARTED] Define an AssetManager class
 - [NOT STARTED] Define an Entity class
-- [NOT STARTED] Define a Behavior class
+- [NOT STARTED] Define a Behavior/Action class
+- [NOT STARTED] Define a systems class
