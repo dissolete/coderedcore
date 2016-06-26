@@ -95,6 +95,11 @@ namespace CRE
 			bool is_empty();
 
 			/**
+			* Returns the rectangle bounding the text object
+			*/
+			//sf::FloatRect get_rect(std::string textID);
+
+			/**
 			* Returns a text by reference specified by the ID in case the text item
 			* needs to be modified in some way.
 			*/

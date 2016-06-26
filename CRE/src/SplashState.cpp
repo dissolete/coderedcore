@@ -27,7 +27,8 @@ namespace CRE
 	}
 
 	void SplashState::reinit(void)
-	{}
+	{
+	}
 
 	void SplashState::update(void)
 	{

@@ -10,7 +10,7 @@ BIN = App/bin
 APPSRC = App/src
 APPINC = App/inc
 
-SFML = -lsfml-graphics -lsfml-window -lsfml-window -lsfml-system
+SFML = -lsfml-graphics -lsfml-window -lsfml-audio -lsfml-system
 
 #---------------------------------------------#
 # DON'T CHANGE ANYTHING BETWEEN THESE ARROWS! #
@@ -56,6 +56,9 @@ $(BIN)/SplashState.o: $(SRC)/SplashState.cpp $(INC)/SplashState.hpp
 
 $(BIN)/CRTextManager.o: $(SRC)/CRTextManager.cpp $(INC)/CRTextManager.hpp
 	$(CC) $(CFLAGS) $(SRC)/CRTextManager.cpp -o $(BIN)/CRTextManager.o
+
+$(BIN)/CRSoundManager.o: $(SRC)/CRSoundManager.cpp $(INC)/CRSoundManager.hpp
+	$(CC) $(CFLAGS) $(SRC)/CRSoundManager.cpp -o $(BIN)/CRSoundManager.o
 
 .PHONY: run clean help
 

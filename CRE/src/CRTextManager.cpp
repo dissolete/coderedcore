@@ -48,17 +48,34 @@ namespace CRE
 //processing time with function calls. Not much space would be saved for a decrease in performance.
 	void TextManager::add_text(std::string textID, std::string textString, sf::Vector2f coordinate, unsigned int charSize)
 	{
-		//Create the new Text object
+		// Create the new Text object
 		Text *newText = new Text(textID, textString, _defaultFont, charSize);
-		//Add the new object to the vector
+
+		// Set origin of the text to the absolute center of the text object
+		sf::FloatRect textRect = newText->_text.getLocalBounds();
+		newText->_text.setOrigin(textRect.left + textRect.width / 2, textRect.top + textRect.height / 2);
+
+		// Set text to the position provided
+		newText->_text.setPosition(coordinate);
+
+		// Add the new text object to the vector
 		_texts.push_back(newText);
 	}
 
 	void TextManager::add_text(std::string textID, std::string textString, sf::Font theFont, 
 				sf::Vector2f coordinate, unsigned int charSize)
 	{
-		//Creates the new Text object and adds it to the vector
+		// Creates the new Text object and adds it to the vector
 		Text *newText = new Text(textID, textString, theFont, charSize);
+
+		// Set origin of the text to the absolute center of the text object
+		sf::FloatRect textRect = newText->_text.getLocalBounds();
+		newText->_text.setOrigin(textRect.left + textRect.width / 2, textRect.top + textRect.height / 2);
+
+		// Set text to the position provided
+		newText->_text.setPosition(coordinate);
+
+		// Add the new text object to the vector
 		_texts.push_back(newText);
 	}
 
@@ -102,7 +119,19 @@ namespace CRE
 		while(itr != _texts.end()){
 			//if the iterator is on the passed ID, remove that Text
 			if((*itr) -> get_ID() == textID){
+
+				// Get a pointer to this text
+				Text * thisText = (*itr);
+
+				// Remove text from the list
 				_texts.erase(itr);
+
+				// Delete the text object
+				delete thisText;
+
+				// Remove local pointer
+				thisText = NULL;
+
 				//No longer need to loop, assumes each textID is unique
 				break;
 			}
