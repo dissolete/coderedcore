@@ -26,7 +26,7 @@ namespace CRE
                   SoundManager();
 
                   /**
-                  *
+                  * Deconstructor for the Sound Manager class. Removes all sounds and songs.
                   */
                   virtual ~SoundManager();
 
