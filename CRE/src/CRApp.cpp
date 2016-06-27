@@ -45,6 +45,7 @@ namespace CRE
 		// Link the app pointer to the manager classes
 		_stateManager.register_app(this);
 		_textManager.register_app(this);
+		_soundManager.register_app(this);
 
 		// Give derived class a time to register custom AssetHandlers
 		init_asset_handlers();

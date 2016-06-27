@@ -9,6 +9,7 @@
 #include "CRConstants.hpp"
 #include "CRStateManager.hpp"
 #include "CRTextManager.hpp"
+#include "CRSoundManager.hpp"
 
 namespace CRE
 {
@@ -33,6 +34,9 @@ namespace CRE
 
             // Text manager for managing game texts
             TextManager _textManager;
+
+            // Sound manager for managing game sounds
+            SoundManager _soundManager;
 
             /////////////////////////////
             /* Public member functions */
