@@ -1,7 +1,5 @@
 /**
 * Text Manager class handles all the text for the game.
-* @author Jake Shepherd
-* @date 06/13/16
 */
 
 #ifndef CRTEXTMANAGER_HPP

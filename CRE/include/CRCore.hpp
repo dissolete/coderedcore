@@ -5,11 +5,14 @@
 #include "CRApp.hpp"
 #include "CRStateManager.hpp"
 #include "CRState.hpp"
-#include "CRText.hpp"
 #include "CRMusic.hpp"
-#include "CRSound.hpp"
 #include "CRTextManager.hpp"
+#include "CRText.hpp"
+#include "CRSound.hpp"
+#include "CRMusic.hpp"
 #include "CRSoundManager.hpp"
 #include "SplashState.hpp"
+#include "CRStatManager.hpp"
+#include "CRMath.hpp"
 
 #endif

@@ -60,6 +60,12 @@ $(BIN)/CRTextManager.o: $(SRC)/CRTextManager.cpp $(INC)/CRTextManager.hpp
 $(BIN)/CRSoundManager.o: $(SRC)/CRSoundManager.cpp $(INC)/CRSoundManager.hpp
 	$(CC) $(CFLAGS) $(SRC)/CRSoundManager.cpp -o $(BIN)/CRSoundManager.o
 
+$(BIN)/CRStatManager.o: $(SRC)/CRStatManager.cpp $(INC)/CRStatManager.hpp
+	$(CC) $(CFLAGS) $(SRC)/CRStatManager.cpp -o $(BIN)/CRStatManager.o
+
+$(BIN)/CRMath.o: $(SRC)/CRMath.cpp $(INC)/CRMath.hpp
+	$(CC) $(CFLAGS) $(SRC)/CRMath.cpp -o $(BIN)/CRMath.o
+
 .PHONY: run clean help
 
 run: $(BIN)/$(TARGET)

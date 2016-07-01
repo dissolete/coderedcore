@@ -15,6 +15,7 @@ namespace CRE
 		_window(),
 		_stateManager(),
 		_textManager(),
+		_statManager(),
 		_maxUpdates(5),
 		_exitCode(0),
 		_updateRate((uint32_t)(1000.0f / 60.0f)), // 60 updates per second
@@ -46,6 +47,7 @@ namespace CRE
 		_stateManager.register_app(this);
 		_textManager.register_app(this);
 		_soundManager.register_app(this);
+		_statManager.register_app(this);
 
 		// Give derived class a time to register custom AssetHandlers
 		init_asset_handlers();

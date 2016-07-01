@@ -1,3 +1,10 @@
+/**
+* Text wrapper class used by the text manager. This wrapper class simply
+* stores the SFML font and text objects used by the SFML library to
+* render text to the SFML render window. This wrapper class also stores
+* the string identifier for this text.
+*/
+
 #ifndef CRTEXT_HPP
 #define CRTEXT_HPP
 
@@ -12,7 +19,7 @@ namespace CRE
 		public:
 
 			/**
-			*
+			* Constructor for this wrapper class.
 			*/
 			Text(const std::string textID, std::string textString, const sf::Font& font,
 					unsigned int charSize = 30) :
@@ -22,7 +29,7 @@ namespace CRE
 			{}
 
 			/**
-			*
+			* Returns the string ID for this wrapper class
 			*/
 			std::string get_ID()
 			{
@@ -36,10 +43,6 @@ namespace CRE
 			sf::Text _text;
 
 		private:
-
-			//////////////////////////////
-            /* Private member variables */
-            //////////////////////////////
 
             // The string identifier for this text
             const std::string _textID;
