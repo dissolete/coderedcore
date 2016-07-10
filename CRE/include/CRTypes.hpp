@@ -16,7 +16,13 @@ namespace CRE
 	class StateManager;
 	class TextManager;
 	class SoundManager;
+    class EntityManager;
 
+    class ActionList;
+
+    class Entity;
+    class Action;
+    class Hitbox;
 	class CRMusic;
 	class CRSound;
 	class CRText;
