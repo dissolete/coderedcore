@@ -66,6 +66,11 @@ $(BIN)/CRStatManager.o: $(SRC)/CRStatManager.cpp $(INC)/CRStatManager.hpp
 $(BIN)/CRMath.o: $(SRC)/CRMath.cpp $(INC)/CRMath.hpp
 	$(CC) $(CFLAGS) $(SRC)/CRMath.cpp -o $(BIN)/CRMath.o
 
+
+$(BIN)/CREntityManager.o: $(SRC)/CREntityManager.cpp $(INC)/CREntityManager.hpp
+	$(CC) $(CFLAGS) $(SRC)/CREntityManager.cpp -o $(BIN)/CREntityManager.o
+
+
 .PHONY: run clean help
 
 run: $(BIN)/$(TARGET)
