@@ -13,7 +13,7 @@
  */
 
 
-
+//This is a datatype 
 #ifndef CRENTITY_HPP
 #define CRENTITY_HPP
 
@@ -92,7 +92,7 @@ namespace CRE{
  		*
  		* @note its pure virtual
  		*/
-		virtual void update() = 0;
+		virtual void update(float appTime) = 0;
 
 		/**
  		* @brief draw
@@ -106,7 +106,7 @@ namespace CRE{
 		virtual void draw() = 0;
 
 
-			}
+			};
 
 }
 
