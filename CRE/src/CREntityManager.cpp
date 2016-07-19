@@ -11,7 +11,7 @@ namespace CRE
 	
 	EntityManager :: ~EntityManager()
 	{ // same as constructor
-
+		clear();
 	}
 
 

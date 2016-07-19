@@ -34,11 +34,6 @@ namespace CRE{
 
 		void update_Entity(std::string entityID);
 
-
-
-		
-
-
 	private:
 
 		App * _theApp;
