@@ -28,7 +28,7 @@ namespace CRE
             virtual ~Action();
 
             /**
-            * Sets the duration of the action. This is holy long it takes for the
+            * Sets the duration of the action. This is how long it takes for the
             * progress to go from 0 to 1.
             */
             void set_duration(float durationInSeconds);
