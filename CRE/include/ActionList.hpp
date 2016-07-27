@@ -12,25 +12,25 @@ namespace CRE
     {
         public:
 
-            ActionList();
+            ActionList();//won't really do anything
 
-            ~ActionList();
+            ~ActionList();//clear memory, actions will be dynamically allocated. Actions deleted here. Call clear
 
             bool is_empty() const;
 
-            void push_back(Action * theAction);
+            void push_back(Action * theAction);//add to the back of the list
 
-            void push_front(Action * theAction);
+            void push_front(Action * theAction);//add to the front of the list
 
-            Action & get_active() const;
+            Action & get_active() const;//return action at the front of the list
 
-            void update();
+            void update();//check to see if active action is done. Call isDone. If it is done, push it to the back and call reset on previously active action
 
-            void set_active(std::string actionID);
+            bool set_active(std::string actionID);//iterate through list, find action by ID, push to front. Previous active goes to the second spot. Call reset on the action moved from the front
 
-            void remove_action(std::string actionID);
+            bool remove_action(std::string actionID);//deallocate the action with that ID
 
-            void clear();
+            void clear();//same as deconstructor
 
         private:
 
