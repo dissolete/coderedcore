@@ -88,7 +88,7 @@ namespace CRE{
  		*
  		* @details Updates the entity 
  		*          
- 		* @param None
+ 		* @param appTime- time since last screen refresh
  		*
  		* @note its pure virtual
  		*/
@@ -104,6 +104,15 @@ namespace CRE{
  		* @note its pure virtual
  		*/
 		virtual void draw() = 0;
+
+		sf::Vector2f get_position(){
+
+			return _position;
+		}
+
+	private:
+
+		sf::Vector2f _position;
 
 
 			};

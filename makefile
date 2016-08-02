@@ -72,6 +72,11 @@ $(BIN)/CREntityManager.o: $(SRC)/CREntityManager.cpp $(INC)/CREntityManager.hpp
 $(BIN)/Action.o: $(SRC)/Action.cpp $(INC)/Action.hpp
 	$(CC) $(CFLAGS) $(SRC)/Action.cpp -o $(BIN)/Action.o
 
+
+$(BIN)/CRHitBox.o: $(SRC)/CRHitBox.cpp $(INC)/CRHitBox.hpp
+	$(CC) $(CFLAGS) $(SRC)/CRHitBox.cpp -o $(BIN)/CRHitBox.o
+
+
 .PHONY: run clean help
 
 run: $(BIN)/$(TARGET)

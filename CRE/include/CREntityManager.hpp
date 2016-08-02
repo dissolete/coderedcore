@@ -18,7 +18,7 @@ namespace CRE{
 
 		~EntityManager();
 
-		void add_Entity(Entity* theEntity , std::string entityID);
+		void add_Entity(std::string entityID, Entity* theEntity);
 
 		Entity& get_Entity(std::string entityID);
 
@@ -34,16 +34,11 @@ namespace CRE{
 
 		void update_Entity(std::string entityID);
 
-
-
-		
-
-
 	private:
 
 		App * _theApp;
         // the map that holds all of the entities
-		std::map<std::string, Entity*> ordered_map;
+		std::map<std::string, Entity*> _entityMap;
 
 	};
 }

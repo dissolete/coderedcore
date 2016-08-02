@@ -1,83 +1,113 @@
-#ifndef CRENTITYMANAGER_CPP
-#define CRENTITYMANAGER_CPP
-
 #include "CREntityManager.hpp"
 
-namespace CRE{
+namespace CRE
+{
 
-EntityManager::EntityManager(){ // so far cant think of anything
+	EntityManager::EntityManager()
+	{ // so far cant think of anything
 
-}
+	}
 
-EntityManager :: ~EntityManager(){ // same as constructor
-
-}
-
-void EntityManager:: add_Entity(Entity * theEntity, std::string entityID){
-
-ordered_map.insert(std::pair<std::string, Entity>(entityID, theEntity) );
-
-}
-
-Entity& EntityManager:: get_Entity(std::string entityID){
-
-return & ordered_map[entityID];
-
-}
+	
+	EntityManager :: ~EntityManager()
+	{ // same as constructor
+		clear();
+	}
 
 
-		
+	void EntityManager:: add_Entity(std::string entityID, Entity * theEntity)
+	{
 
-void EntityManager::update_Entities(float appTime){
- 	for(std::map<std::string, Entity>::iterator it=ordered_map.begin(); it!=ordered_map.end(); ++it){
- 		it->update(appTime);
- 	}
+		_entityMap.insert(std::pair<std::string, Entity*>(entityID, theEntity) );
 
-}
+	}
 
-		
+	Entity& EntityManager:: get_Entity(std::string entityID)
+	{
 
-void EntityManager::draw_Entities(){
+		return *(_entityMap[entityID]);
 
-	for(std::map< std::string, Entity>::iterator it=ordered_map.begin(); it!=ordered_map.end(); ++it){
-     
-     _theApp -> _window.draw(&it); //not sure about the pointer
+	}
 
-	}	
 
-}
+			
 
-		
-void EntityManager::remove_Entity(std::string entityID){
+	void EntityManager::update_Entities(float appTime)
+	{
+		// Iterate through entity map
+	 	for(auto it = _entityMap.begin(); it != _entityMap.end(); ++it)
+	 	{
+	 		// Call update function on entity
+	 		(*it).second->update(appTime);
+	 	}
 
-	ordered_map.erase(entityID);
+	}			
 
+	void EntityManager::draw_Entities()
+	{
+		// Iterate through entity map
+		for(auto it = _entityMap.begin(); it != _entityMap.end(); ++it)
+		{
+			// Call draw function on entity
+			(*it).second->draw();
+		}	
+
+	}
+	
+	void EntityManager::remove_Entity(std::string entityID)
+	{
+
+		// Get pointer to the entity to be deleted
+		Entity * theEntity = _entityMap[entityID];
+
+		// Remove the pointer from the map
+		_entityMap.erase(entityID);
+
+		// Deallocate the memory
+		delete theEntity;
+
+		// Remove local pointer
+		theEntity = NULL;
+
+	}			
+
+	void EntityManager::clear()
+	{
+		// Local entity pointer
+		Entity * theEntity;
+
+		// Iterate through map
+		for(auto it = _entityMap.begin(); it != _entityMap.end(); ++it)
+		{
+			// Get pointer to the entity to be deleted
+			theEntity = (*it).second;
+
+			// Remove this pointer from the map
+			_entityMap.erase(it);
+
+			// Deallocate the memory for the entity
+			delete theEntity;
 		}
 
-		
+		// Remove local pointer
+		theEntity = NULL;
+	}
 
-void EntityManager::clear(){
+			
+	void EntityManager::draw_Entity(std::string entityID)
+	{
+		_entityMap[entityID]->draw();
+	}
 
-	ordered_map.clear();
+			
+	void EntityManager::update_Entity(std::string entityID)
+	{
 
-}
+		float app_time; // entity manager needs this as a parameter
 
-		
-void EntityManager::draw_Entity(std::string entityID){
+		_entityMap[entityID]->update(app_time); // what about the apptime??
 
-	_theApp->_window.draw(ordered_map[entityID]);
+	}
 
-}
-
-		
-void EntityManager::update_Entity(std::string entityID){
-
-	float app_time; // entity manager needs this as a parameter
-
-	ordered_map[entityID]-> update(app_time); // what about the apptime??
-
-}
 
 }
-
-#endif
