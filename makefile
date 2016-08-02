@@ -76,6 +76,9 @@ $(BIN)/Action.o: $(SRC)/Action.cpp $(INC)/Action.hpp
 $(BIN)/CRHitBox.o: $(SRC)/CRHitBox.cpp $(INC)/CRHitBox.hpp
 	$(CC) $(CFLAGS) $(SRC)/CRHitBox.cpp -o $(BIN)/CRHitBox.o
 
+$(BIN)/ActionList.o: $(SRC)/ActionList.cpp $(INC)/ActionList.hpp
+	$(CC) $(CFLAGS) $(SRC)/ActionList.cpp -o $(BIN)/ActionList.o
+
 
 .PHONY: run clean help
 
