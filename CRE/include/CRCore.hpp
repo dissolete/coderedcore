@@ -14,5 +14,6 @@
 #include "SplashState.hpp"
 #include "CRStatManager.hpp"
 #include "CRMath.hpp"
+#include "CRTileMap2.hpp"
 
 #endif

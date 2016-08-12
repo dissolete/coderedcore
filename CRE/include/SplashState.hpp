@@ -15,7 +15,7 @@ namespace CRE
 			/**
 			*
 			*/
-			SplashState(App& theApp, const std::string filename = "resources/splash.png", 
+			SplashState(App& theApp, const std::string filename = "Resources/splash.png", 
 				float delay = 5.0f);
 
 			/**

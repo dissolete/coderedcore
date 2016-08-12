@@ -59,6 +59,12 @@ namespace CRE
         return normal;
     }
 
+    sf::Vector2f vector_between_points(const sf::Vector2f & vectorOne, const sf::Vector2f & vectorTwo)
+    {
+        sf::Vector2f parallelVector(vectorTwo.x - vectorOne.x, vectorTwo.y - vectorOne.y);
+        return parallelVector;
+    }
+
     ////////////////////////////////////////////////////////////////////////////
 
     //////////////////////////
