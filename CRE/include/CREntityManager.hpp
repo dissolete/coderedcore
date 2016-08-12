@@ -18,25 +18,27 @@ namespace CRE{
 
 		~EntityManager();
 
-		void add_Entity(std::string entityID, Entity* theEntity);
+		void add_entity(std::string entityID, Entity* theEntity);
 
-		Entity& get_Entity(std::string entityID);
+		Entity& get_entity(std::string entityID);
 
-		void update_Entities(float appTime);
+		void update_entities(float appTime);
 
-		void draw_Entities();
+		void draw_entities();
 
-		void remove_Entity(std::string entityID);
+		void remove_entity(std::string entityID);
 
 		void clear();
 
-		void draw_Entity(std::string entityID);
+		void draw_entity(std::string entityID);
 
-		void update_Entity(std::string entityID);
+		void update_entity(std::string entityID);
+
+		//TODO: bool collides_with()
 
 	private:
 
-		App * _theApp;
+		//App * _theApp;
         // the map that holds all of the entities
 		std::map<std::string, Entity*> _entityMap;
 

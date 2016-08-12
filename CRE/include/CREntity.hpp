@@ -17,6 +17,7 @@
 #ifndef CRENTITY_HPP
 #define CRENTITY_HPP
 
+#include <SFML/System/Vector2.hpp>
 #include "CRTypes.hpp"
 #include "CRApp.hpp"
 
@@ -35,8 +36,9 @@ namespace CRE{
  		*
  		* @note Its does nothing 
  		*/
-		Entity()
-		{}
+		Entity();
+
+		Entity(int positionX, int positionY, unsigned int width, unsigned int height);
 
 		/**
  		* @brief Deconstructor 
@@ -47,8 +49,7 @@ namespace CRE{
  		*
  		* @note its virtual
  		*/
-        virtual ~Entity()
-        {}
+        virtual ~Entity();
 
         /**
  		* @brief Process events
@@ -105,8 +106,28 @@ namespace CRE{
  		*/
 		virtual void draw() = 0;
 
+		sf::Vector2f get_position() const;
 
-			};
+		unsigned int get_width() const;
+
+		unsigned int get_height() const;
+
+		void set_position(int x, int y);
+
+		void set_position(sf::Vector2f newPosition);
+
+		void set_width(unsigned int newWidth);
+
+		void set_height(unsigned int newHeight);
+
+
+	private:
+		// TODO: Perhaps have a map of stats called attributes
+		// So each entity could have a container for their
+		// specific attributes
+		sf::Vector2f _position;
+		unsigned int _width, _height;
+	};
 
 }
 

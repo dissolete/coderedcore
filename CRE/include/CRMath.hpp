@@ -54,6 +54,8 @@ namespace CRE
     */
     sf::Vector2f normalize_vector(sf::Vector2f theVector);
 
+    sf::Vector2f vector_between_points(const sf::Vector2f & vectorOne, const sf::Vector2f & vectorTwo);
+
     //////////////////////////
     /* Trigonometry helpers */
     //////////////////////////

@@ -1,6 +1,12 @@
-#--------------------------#
-# CODE RED ENGINE MAKEFILE #
-#--------------------------#
+#----------------------------#
+#  CODE RED ENGINE MAKEFILE  #
+#----------------------------#
+#  We should probably switch #
+# to CMAKE eventually... lol #
+#----------------------------#
+# Author: Jake Shepherd      #
+# Last updated: 7/30/2016    #
+#----------------------------#
 
 TARGET = App
 
@@ -8,7 +14,8 @@ SRC = CRE/src
 INC = CRE/include
 BIN = App/bin
 APPSRC = App/src
-APPINC = App/inc
+APPINC = App/include
+PUGI = Extlibs/Pugi
 
 SFML = -lsfml-graphics -lsfml-window -lsfml-audio -lsfml-system
 
@@ -17,27 +24,60 @@ SFML = -lsfml-graphics -lsfml-window -lsfml-audio -lsfml-system
 #---------------------------------------------#
 #vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv#
 
+# Source files for the CRE
 CRSOURCE = $(wildcard $(SRC)/*.cpp)
+
+# Source files for the App
 APPSOURCE = $(wildcard $(APPSRC)/*.cpp)
+
+# Header files for the CRE
 CRINCLUDES = $(wildcard $(INC)/*.hpp)
+
+# Header files for the App
 APPINCLUDES = $(wildcard $(APPINC)/*.hpp)
+
+# Source files for the Pugi Library
+PUGISOURCE = $(wildcard $(PUGI)/*.cpp)
+
+# Head files for the Pugi Library
+PUGISINCLUDES = $(wildcard $(PUGI)/*.hpp)
+
+# Object files for the CRE
 OBJECTS = $(patsubst %,$(BIN)/%, $(notdir $(CRSOURCE:.cpp=.o)))
+
+# Object files for the App
 APPOBJECTS = $(patsubst %,$(BIN)/%, $(notdir $(APPSOURCE:.cpp=.o)))
 
-CC = g++ -std=c++11
-CFLAGS = -I$(INC) -c
+# Object files for the Pugi Library
+PUGIOBJECTS = $(patsubst %,$(BIN)/%, $(notdir $(PUGISOURCE:.cpp=.o)))
 
-link: $(OBJECTS) $(APPOBJECTS)
-	@echo "Linking..."
-	$(CC) $(OBJECTS) $(APPOBJECTS) -o $(BIN)/$(TARGET) \
+# Compiling options
+CC = g++ -std=c++11
+
+# Flags for compiling
+CFLAGS = -I$(INC) -I$(APPINC) -I$(PUGI) -c
+
+link: premessage $(PUGIOBJECTS) $(OBJECTS) $(APPOBJECTS)
+	@echo "\nLinking..."
+	$(CC) $(PUGIOBJECTS) $(OBJECTS) $(APPOBJECTS) -o $(BIN)/$(TARGET) \
 	$(SFML)
-	@echo "Finished!\n"
+	@echo "\nLinking finished. Type \"make run\" to execute app.\n"
+
+premessage:
+	@echo "Did you remember to save everything?\n"
+	@echo "Compiling..."
 
 #^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^#
 
-#----------------------------#
-# ADD NEW OBJECT FILES BELOW #
-#----------------------------#
+#headers:
+#	$(CC) $(CFLAGS) -c $(APPINCLUDES) $(CRINCLUDES)
+
+$(BIN)/pugixml.o: $(PUGI)/pugixml.cpp $(PUGI)/pugixml.hpp $(PUGI)/pugiconfig.hpp
+	$(CC) $(CFLAGS) $(PUGI)/pugixml.cpp -o $(BIN)/pugixml.o
+
+#-----------------------------------#
+# ADD NEW ENGINE OBJECT FILES BELOW #
+#-----------------------------------#
 
 $(BIN)/main.o: $(APPSRC)/main.cpp $(APPINCLUDES) $(CRINCLUDES)
 	$(CC) $(CFLAGS) $(APPSRC)/main.cpp -o $(BIN)/main.o
@@ -72,23 +112,49 @@ $(BIN)/CREntityManager.o: $(SRC)/CREntityManager.cpp $(INC)/CREntityManager.hpp
 $(BIN)/Action.o: $(SRC)/Action.cpp $(INC)/Action.hpp
 	$(CC) $(CFLAGS) $(SRC)/Action.cpp -o $(BIN)/Action.o
 
+$(BIN)/CRTileMap2.o: $(SRC)/CRTileMap2.cpp $(INC)/CRTileMap2.hpp
+	$(CC) $(CFLAGS) $(SRC)/CRTileMap2.cpp -o $(BIN)/CRTileMap2.o
+
+$(BIN)/CREntity.o: $(SRC)/CREntity.cpp $(INC)/CREntity.hpp
+	$(CC) $(CFLAGS) $(SRC)/CREntity.cpp -o $(BIN)/CREntity.o
+
+#--------------------------------#
+# ADD NEW APP OBJECT FILES BELOW #
+#--------------------------------#
+
+$(BIN)/Main.o: $(APPSRC)/Main.cpp $(APPINCLUDES) $(CRINCLUDES)
+	$(CC) $(CFLAGS) $(APPSRC)/main.cpp -o $(BIN)/main.o
+
+$(BIN)/TestApp.o: $(APPSRC)/TestApp.cpp $(APPINC)/TestApp.hpp
+	$(CC) $(CFLAGS) $(APPSRC)/TestApp.cpp -o $(BIN)/TestApp.o
+
+$(BIN)/TestState.o: $(APPSRC)/TestState.cpp $(APPINC)/TestState.hpp
+	$(CC) $(CFLAGS) $(APPSRC)/TestState.cpp -o $(BIN)/TestState.o
+
 .PHONY: run clean help
+
+#---------------------------------#
+# ADDITIONAL FUNCTION DECLARATION #
+#---------------------------------#
 
 run: $(BIN)/$(TARGET)
 	$(BIN)/$(TARGET)
 
 clean:
-	rm -f $(OBJECTS) $(APPOBJECTS) $(BIN)/$(TARGET)
+	rm -f $(OBJECTS) $(APPOBJECTS) $(PUGIOBJECTS) $(BIN)/$(TARGET)
+	@echo "Removed all object files and app executable.\n"
 
 clean-o:
-	rm -f $(OBJECTS) $(APPOBJECTS)
+	rm -f $(OBJECTS) $(APPOBJECTS) $(PUGIOBJECTS)
+	@echo "Removed all object files only. App executable remains.\n"
 
 help:
 	@echo ""
+	@echo "extlibs: $(PUGISOURCE) $(PUGISINCLUDES)\n"
 	@echo "crsrc: $(CRSOURCE)\n"
 	@echo "crinc: $(CRINCLUDES)\n"
 	@echo "crobj: $(OBJECTS)\n"
 	@echo "appsrc: $(APPSOURCE)\n"
 	@echo "appinc: $(APPINCLUDES)\n"
 	@echo "appobj: $(APPOBJECTS)\n"
-
+	@echo "extobj: $(PUGIOBJECTS)\n"

@@ -10,22 +10,30 @@
 
 namespace CRE
 {
+
+    // Interface classes
 	class App;
 	class State;
 
-	class StateManager;
-	class TextManager;
-	class SoundManager;
-    class EntityManager;
-
-    class ActionList;
-
+    // Entity classes
     class Entity;
     class Action;
     class Hitbox;
+    class ActionList;
+
+    // Asset Classes
 	class CRMusic;
 	class CRSound;
 	class CRText;
+
+    // Manager Classes
+    class StateManager;
+    class TextManager;
+    class SoundManager;
+    class EntityManager;
+
+    // Unclassified atm
+    class CRTileMap;
 }
 
 #endif

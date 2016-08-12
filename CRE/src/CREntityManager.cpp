@@ -15,24 +15,21 @@ namespace CRE
 	}
 
 
-	void EntityManager:: add_Entity(std::string entityID, Entity * theEntity)
+	void EntityManager::add_entity(std::string entityID, Entity * theEntity)
 	{
 
-		_entityMap.insert(std::pair<std::string, Entity*>(entityID, theEntity) );
+		_entityMap.insert(std::pair<std::string, Entity*>(entityID, theEntity));
 
 	}
 
-	Entity& EntityManager:: get_Entity(std::string entityID)
+	Entity& EntityManager::get_entity(std::string entityID)
 	{
 
 		return *(_entityMap[entityID]);
 
 	}
 
-
-			
-
-	void EntityManager::update_Entities(float appTime)
+	void EntityManager::update_entities(float appTime)
 	{
 		// Iterate through entity map
 	 	for(auto it = _entityMap.begin(); it != _entityMap.end(); ++it)
@@ -43,7 +40,7 @@ namespace CRE
 
 	}			
 
-	void EntityManager::draw_Entities()
+	void EntityManager::draw_entities()
 	{
 		// Iterate through entity map
 		for(auto it = _entityMap.begin(); it != _entityMap.end(); ++it)
@@ -54,7 +51,7 @@ namespace CRE
 
 	}
 	
-	void EntityManager::remove_Entity(std::string entityID)
+	void EntityManager::remove_entity(std::string entityID)
 	{
 
 		// Get pointer to the entity to be deleted
@@ -94,13 +91,13 @@ namespace CRE
 	}
 
 			
-	void EntityManager::draw_Entity(std::string entityID)
+	void EntityManager::draw_entity(std::string entityID)
 	{
 		_entityMap[entityID]->draw();
 	}
 
 			
-	void EntityManager::update_Entity(std::string entityID)
+	void EntityManager::update_entity(std::string entityID)
 	{
 
 		float app_time; // entity manager needs this as a parameter
