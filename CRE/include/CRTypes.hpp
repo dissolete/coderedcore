@@ -25,6 +25,9 @@ namespace CRE
 	class CRMusic;
 	class CRSound;
 	class CRText;
+	
+	template <typename T>
+	class Stat;
 
     // Manager Classes
     class StateManager;
