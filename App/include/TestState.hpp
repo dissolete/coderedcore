@@ -20,6 +20,7 @@
 #include "CRTypes.hpp"
 #include "CRConstants.hpp"
 #include "CRTileMap2.hpp"
+#include "CREntity2.hpp"
 
 class TestState : public CRE::State
 {
@@ -84,6 +85,7 @@ class TestState : public CRE::State
 
     private:
         CRE::TileMap testTileMap;
+        CRE::Entity * testEntity;
 };
 
 #endif

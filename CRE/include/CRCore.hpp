@@ -15,5 +15,8 @@
 #include "CRStatManager.hpp"
 #include "CRMath.hpp"
 #include "CRTileMap2.hpp"
+#include "CRGroup.hpp"
+#include "Property.hpp"
+#include "PropertyManager.hpp"
 
 #endif

@@ -115,8 +115,17 @@ $(BIN)/Action.o: $(SRC)/Action.cpp $(INC)/Action.hpp
 $(BIN)/CRTileMap2.o: $(SRC)/CRTileMap2.cpp $(INC)/CRTileMap2.hpp
 	$(CC) $(CFLAGS) $(SRC)/CRTileMap2.cpp -o $(BIN)/CRTileMap2.o
 
-$(BIN)/CREntity.o: $(SRC)/CREntity.cpp $(INC)/CREntity.hpp
-	$(CC) $(CFLAGS) $(SRC)/CREntity.cpp -o $(BIN)/CREntity.o
+$(BIN)/CREntity2.o: $(SRC)/CREntity2.cpp $(INC)/CREntity2.hpp
+	$(CC) $(CFLAGS) $(SRC)/CREntity2.cpp -o $(BIN)/CREntity2.o
+
+$(BIN)/CRPropertyManager.o: $(SRC)/CRPropertyManager.cpp $(INC)/CRPropertyManager.hpp
+	$(CC) $(CFLAGS) $(SRC)/CRPropertyManager.cpp -o $(BIN)/CRPropertyManager.o
+
+$(BIN)/Property.o: $(SRC)/Property.cpp $(INC)/Property.hpp
+	$(CC) $(CFLAGS) $(SRC)/Property.cpp -o $(BIN)/Property.o
+
+$(BIN)/CRGroup.o: $(SRC)/CRGroup.cpp $(INC)/CRGroup.hpp
+	$(CC) $(CFLAGS) $(SRC)/CRGroup.cpp -o $(BIN)/CRGroup.o
 
 #--------------------------------#
 # ADD NEW APP OBJECT FILES BELOW #
@@ -131,7 +140,7 @@ $(BIN)/TestApp.o: $(APPSRC)/TestApp.cpp $(APPINC)/TestApp.hpp
 $(BIN)/TestState.o: $(APPSRC)/TestState.cpp $(APPINC)/TestState.hpp
 	$(CC) $(CFLAGS) $(APPSRC)/TestState.cpp -o $(BIN)/TestState.o
 
-.PHONY: run clean help
+.PHONY: run clean clean-o help
 
 #---------------------------------#
 # ADDITIONAL FUNCTION DECLARATION #
