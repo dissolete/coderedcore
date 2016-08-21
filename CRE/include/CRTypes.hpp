@@ -29,11 +29,15 @@ namespace CRE
 	template <typename T>
 	class Stat;
 
+	class Timer;
+
     // Manager Classes
     class StateManager;
     class TextManager;
     class SoundManager;
     class EntityManager;
+    class StatManager;
+    class TimerManager;
 
     // Unclassified atm
     class CRTileMap;

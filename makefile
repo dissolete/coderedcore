@@ -109,6 +109,9 @@ $(BIN)/CRMath.o: $(SRC)/CRMath.cpp $(INC)/CRMath.hpp
 $(BIN)/CREntityManager.o: $(SRC)/CREntityManager.cpp $(INC)/CREntityManager.hpp
 	$(CC) $(CFLAGS) $(SRC)/CREntityManager.cpp -o $(BIN)/CREntityManager.o
 
+$(BIN)/CRTimer.o: $(SRC)/CRTimer.cpp $(INC)/CRTimer.hpp
+	$(CC) $(CFLAGS) $(SRC)/CRTimer.cpp -o $(BIN)/CRTimer.o
+
 $(BIN)/Action.o: $(SRC)/Action.cpp $(INC)/Action.hpp
 	$(CC) $(CFLAGS) $(SRC)/Action.cpp -o $(BIN)/Action.o
 
