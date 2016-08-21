@@ -23,6 +23,14 @@ void TestState::init()
     // // Initialize parent state
      CRE::State::init();
      testTileMap.load_data();
+
+     testEntity = new CRE::Entity("Test");
+
+     testEntity->_properties.add<int>("HP", 10);
+     testEntity->_properties.add<sf::Sprite>("Sprite", sf::Sprite());
+     testEntity->_properties.add< std::vector<int> >("Vector", std::vector<int>());
+
+
     // testTileMap = new CRE::TileMap("TestMap", "Resources/TileMaps/tileMap2.tmx");
     // testTileMap->load_data();
     // //if( testTileMap->load_tile_data("Resources/TileMaps/tileMap1.txt") )
@@ -49,6 +57,11 @@ void TestState::handle_events(sf::Event theEvent)
 {
     if( theEvent.type == sf::Event::MouseButtonPressed )
     {
+        std::cout << "Entity " << testEntity->get_ID() << " has order "
+            << testEntity->get_order() << std::endl;
+
+        auto entityVector = testEntity->_properties.get< std::vector<int> >("Vector");
+
         // std::cout << "Mouse click" << std::endl;
 
         // if(testTileMap.is_loaded())
@@ -102,6 +115,7 @@ void TestState::draw(void)
 
 void TestState::handle_cleanup(void)
 {
+    delete testEntity;
     // std::cout << "TestState::handle_cleanup() -\n";
     // delete testTileMap;
     // testTileMap = NULL;

@@ -17,19 +17,20 @@
 #include <vector>
 #include <sstream>
 #include "CRTypes.hpp"
-#include "CREntity.hpp"
+#include "CREntity2.hpp"
 #include "CREntityManager.hpp"
+#include "CRGroup.hpp"
 #include "pugixml.hpp"
 
 namespace CRE
 {
 
-    class TileMapObject : public Entity
+    class TileMapObject
     {
         public:
 
-            TileMapObject(int positionX, int positionY, unsigned int width, unsigned int height) :
-                Entity(positionX, positionY, width, height)
+            TileMapObject(int positionX, int positionY, unsigned int width, unsigned int height)
+
             {}
 
             virtual void process_events(){}
@@ -96,7 +97,7 @@ namespace CRE
             void stitch_layer();
 
             //TileSet& get_tileset_with_gid(int gid);
-            
+
             /// The tileset this layer will use
             TileSet _tileSet;
 
@@ -117,6 +118,7 @@ namespace CRE
         public:
 
             TileMap(std::string tileMapID, std::string xmlDataFilename);
+            ~TileMap();
 
             bool load_data();
 
@@ -137,6 +139,12 @@ namespace CRE
             std::string get_ID() const;
 
             /**
+            * Returns a reference to a group contained by the tilemap.
+            * Uncaught behavior if the groupID is not found.
+            */
+            Group& get_group(std::string groupID);
+
+            /**
             * Draws the layers starting at layer layerStart and ending with
             * layer layerStart. Example: draw_layers(0, 3, window) will draw the first
             * four layers of the _layers vector.
@@ -154,6 +162,7 @@ namespace CRE
             bool _tileDataLoaded;
 
             std::vector<TileSet> _tilesets;
+            std::map<std::string, Group> _objects;
 
             /// Vector stores the layers for this tile map. These layers can
             /// be directly drawn.

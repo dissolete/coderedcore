@@ -41,6 +41,9 @@ namespace CRE
 
     // Unclassified atm
     class CRTileMap;
+	class PropertyManager;
+	class IProperty;
+	class Group;
 }
 
 #endif
