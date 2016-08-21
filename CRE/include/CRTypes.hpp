@@ -25,7 +25,7 @@ namespace CRE
 	class CRMusic;
 	class CRSound;
 	class CRText;
-	
+
 	template <typename T>
 	class Stat;
 
@@ -38,6 +38,9 @@ namespace CRE
     class EntityManager;
     class StatManager;
     class TimerManager;
+	class GroupManager;
+	class TileMapManager;
+
 
     // Unclassified atm
     class CRTileMap;
