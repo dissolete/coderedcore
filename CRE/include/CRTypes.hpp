@@ -31,6 +31,8 @@ namespace CRE
     class TextManager;
     class SoundManager;
     class EntityManager;
+	class GroupManager;
+	class TileMapManager;
 
     // Unclassified atm
     class CRTileMap;

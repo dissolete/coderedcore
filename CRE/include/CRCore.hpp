@@ -17,6 +17,7 @@
 #include "CRTileMap2.hpp"
 #include "CRGroup.hpp"
 #include "Property.hpp"
-#include "PropertyManager.hpp"
+#include "CRPropertyManager.hpp"
+#include "CRTileMapManager.hpp"
 
 #endif

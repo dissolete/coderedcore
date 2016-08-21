@@ -127,6 +127,12 @@ $(BIN)/Property.o: $(SRC)/Property.cpp $(INC)/Property.hpp
 $(BIN)/CRGroup.o: $(SRC)/CRGroup.cpp $(INC)/CRGroup.hpp
 	$(CC) $(CFLAGS) $(SRC)/CRGroup.cpp -o $(BIN)/CRGroup.o
 
+$(BIN)/CRGroupManager.o: $(SRC)/CRGroupManager.cpp $(INC)/CRGroupManager.hpp
+	$(CC) $(CFLAGS) $(SRC)/CRGroupManager.cpp -o $(BIN)/CRGroupManager.o
+
+$(BIN)/CRTileMapManager.o: $(SRC)/CRTileMapManager.cpp $(INC)/CRTileMapManager.hpp
+	$(CC) $(CFLAGS) $(SRC)/CRTileMapManager.cpp -o $(BIN)/CRTileMapManager.o
+
 #--------------------------------#
 # ADD NEW APP OBJECT FILES BELOW #
 #--------------------------------#

@@ -10,7 +10,20 @@ namespace CRE
         // Cleanup all entities
         for(auto it = _groups.begin(); it != _groups.end(); ++it)
         {
-            it->second->cleanup();
+            // Get reference to group
+            Group * aGroup = it->second;
+
+            // Remove pair from map
+            _groups.erase(it);
+
+            // Cleanup group
+            aGroup->cleanup();
+
+            // Delete the group
+            delete aGroup;
+
+            // Remove local pointer
+            aGroup = NULL;
         }
     }
 
